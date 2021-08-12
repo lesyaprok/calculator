@@ -1,0 +1,91 @@
+html,
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    display: flex;
+    align-items: center;
+    height: 100vh;  
+}
+
+.calc-wrapper { 
+    max-width: 300px;
+    margin: 0 auto;
+    padding: 10px;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #678A8A;
+    border: 2px solid #0D1F1F;
+    border-radius: 5px;
+}
+
+.input-wrapper {
+    display: flex;
+    align-content: space-around;
+}
+
+.input {
+    width: 95%;
+    padding: 15px;
+    box-sizing: border-box;   
+    color: #0D1F1F;
+    font-size: 28px;
+    letter-spacing: 1.3px;
+    background-color: rgb(249, 249, 250);
+    outline: none;
+    border: none; 
+    border-radius: 3px;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 10px;
+    color: #ece1c9;
+    font-size: 26px;
+    cursor: default;
+}
+
+.button {
+    width: 44px;
+    margin: 1px;
+    padding: 10px;
+    text-align: center;
+    border: 1px solid #0D1F1F;
+    border-radius: 3px;
+    transition: 0.5s;
+    user-select: none;
+}
+
+.button:hover {
+    color: #678A8A;
+    background-color: #ece1c9;
+}
+
+.delete {
+    width: 20px;
+    margin: 0;
+    padding: 15px;
+    vertical-align: middle; 
+    color: #FF7800;
+    background: url('./icons/del.svg') no-repeat center center / 50%;
+    background-color: rgb(249, 249, 250);
+    border: none;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+.delete:hover {
+    background-color: #ece1c9;
+}
+
+.count {   
+    color: #678A8A;
+    background-color: #ece1c9;
+}
+.count:hover {
+    background-color: #f0dda9;
+}
