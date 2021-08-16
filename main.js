@@ -4,6 +4,7 @@ const deleteButton = document.getElementById('delete');
 const info = document.getElementById('info');
 
 document.addEventListener('keydown', keyboardListener);
+document.addEventListener('keyup', () => setTimeout(removeHighlight, 300));
 buttons.addEventListener('click', buttonsListener);
 input.addEventListener('input', deleteLetters);
 deleteButton.addEventListener('click', () => deleteItem(input));
@@ -31,6 +32,7 @@ function keyboardListener(e) {
             input.value += e.key;
     }
     deleteLetters();
+    addHighlight(e);
 }
 
 function buttonsListener(e) {
@@ -107,3 +109,19 @@ function countPercent(string) {
         input.value = '';
     }
 }
+
+function addHighlight(e) {
+    [...document.querySelectorAll('.button')].map(i => {
+        if (i.dataset.item === e.key) return i.classList.add('highlight');
+        else if (e.key === '*' && i.dataset.item === '×') return i.classList.add('highlight');
+        else if (e.key === '/' && i.dataset.item === '÷') return i.classList.add('highlight');
+        else if (e.key === 'Backspace' && i.id == 'delete') return i.classList.add('highlight-delete');
+        return i;
+    });
+}
+
+function removeHighlight() {
+    [...document.querySelectorAll('.button')].map(i => i.classList.remove('highlight') ||
+        i.classList.remove('highlight-delete'));
+}
+
