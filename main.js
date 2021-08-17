@@ -78,9 +78,11 @@ function countValue(input, info) {
                 input.value = '';
                 info.innerText = "Division by zero is not possible";
             }
-            else if (!result && result !== 0) info.innerText = "Enter values";
+            else if (!result && result !== 0) {
+                info.innerText = "Enter values";
+            }
             else {
-                info.innerText = string.replace(/\*/g, '×').replace(/\//g, '÷') + '=' + result;
+                info.innerText = `${string.replace(/\*/g, '×').replace(/\//g, '÷')} = ${result}`;
                 input.value = result;
             }
         } catch {
@@ -97,12 +99,18 @@ function countPercent(string) {
         let operands = string.slice(0, -1).split(/[*+-]/);
         let percent = 0;
 
-        if (operator[0] === '*') percent = operands[0] * operands[1] / 100;
-        else if (operator[0] === '+') percent = +operands[0] + +operands[0] * operands[1] / 100;
-        else if (operator[0] === '-') percent = operands[0] - operands[0] * operands[1] / 100;
+        if (operator[0] === '*') {
+            percent = operands[0] * operands[1] / 100;
+        }    
+        else if (operator[0] === '+') {
+            percent = +operands[0] + +operands[0] * operands[1] / 100;
+        }    
+        else if (operator[0] === '-') {
+            percent = operands[0] - operands[0] * operands[1] / 100;
+        }    
 
         input.value = percent;
-        info.innerText = string.replace(/\*/g, '×').replace(/\//g, '÷') + '=' + percent;
+        info.innerText = `${string.replace(/\*/g, '×').replace(/\//g, '÷')} = ${percent}`;
     }
     catch {
         info.innerText = "Incorrect input, try again";
@@ -111,13 +119,12 @@ function countPercent(string) {
 }
 
 function addHighlight(e) {
-    [...document.querySelectorAll('.button')].map(i => {
-        if (i.dataset.item === e.key) return i.classList.add('highlight');
-        else if (e.key === '*' && i.dataset.item === '×') return i.classList.add('highlight');
-        else if (e.key === '/' && i.dataset.item === '÷') return i.classList.add('highlight');
-        else if (e.key === 'Backspace' && i.id == 'delete') return i.classList.add('highlight-delete');
-        return i;
-    });
+    [...document.querySelectorAll('.button')].map(i => (i.dataset.item === e.key) ? i.classList.add('highlight')
+        : (e.key === '*' && i.dataset.item === '×') ? i.classList.add('highlight')
+        : (e.key === '/' && i.dataset.item === '÷') ? i.classList.add('highlight')
+        : (e.key === 'Backspace' && i.id == 'delete') ? i.classList.add('highlight-delete')
+        : i
+    );
 }
 
 function removeHighlight() {
