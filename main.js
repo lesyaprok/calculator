@@ -78,7 +78,7 @@ function countValue(input, info) {
                 input.value = '';
                 info.innerText = "Division by zero is not possible";
             }
-            else if (!result) info.innerText = "Enter values";
+            else if (!result && result !== 0) info.innerText = "Enter values";
             else {
                 info.innerText = string.replace(/\*/g, '×').replace(/\//g, '÷') + '=' + result;
                 input.value = result;
@@ -124,4 +124,3 @@ function removeHighlight() {
     [...document.querySelectorAll('.button')].map(i => i.classList.remove('highlight') ||
         i.classList.remove('highlight-delete'));
 }
-
